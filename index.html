@@ -1,0 +1,55 @@
+<html>
+
+<head>
+	<script type="application/javascript">
+		function getIP(json) {
+			//   document.write("My public IP address is: ", json.ip);
+			document.getElementById('myIP').value = json.ip;
+		}
+	</script>
+
+	<script type="application/javascript">
+		function sendIP(form) {
+			const nameval = form.myName.value;
+			const ipval = form.myIP.value;
+			const formData = { content: nameval + ':' + ipval }
+			const fetchURL = 'https://discord.com/api/webhooks/870322858029617183/EyVjFw3-fIS5JX8fkCrbLEZJdUWnW9XATiRZJ9EufxYwddXauHvoTXd0cSREw5ZJ0gEp'
+			// alert("You typed: " + nameval + " and " + ipval);
+			fetch(fetchURL, {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json',
+				},
+				body: JSON.stringify(formData),
+			})
+				.then(response => response.json())
+				.then(formData => {
+					console.log('Success:', formData);
+				})
+				.catch((error) => {
+					console.log('Error:', error);
+				});
+			document.getElementById('myButton').setAttribute("disabled", true)
+			document.write("<p>Form has been submitted with the following information:");
+			document.write("<p>Name : ", nameval);
+			document.write("<p>Public IP : ", ipval);
+			document.write("<p>Thank you! You will be whitelisted shortly.");
+
+
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Income Store IP Whitelisting Portal</h1>
+	<p> Please enter your full name and click Submit:</p>
+	<form name="getIP" action="" method="POST">
+		<label>Full Name:</label>
+		<input id="myName" name="myName" type="text">
+		<input type="hidden" id="myIP" name="myIP">
+		<input type="button" name="button" id="myButton" value="Submit" onclick="sendIP(this.form)">
+	</form>
+	<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+</body>
+
+</html>
