@@ -1,6 +1,39 @@
 <html>
 
 <head>
+	<style>
+		body {
+			max-width: 500px;
+			margin: auto;
+			padding: 10px;
+		}
+
+		h1 {
+			font-weight: 300;
+			font-size: 38px;
+			margin: 0px 0px 0px 0px;
+			line-height: 120%;
+			font-family: 'Open sans', sans-serif;
+		}
+
+		p {
+			font-family: 'Open sans', sans-serif;
+			color: #777777;
+			font-size: 14px;
+		}
+
+		label {
+			font-family: 'Open sans', sans-serif;
+			color: #777777;
+			font-size: 12x;
+		}
+
+		a {
+			color: #f20553;
+			text-decoration: none;
+		}
+	</style>
+
 	<script type="application/javascript">
 		function getIP(json) {
 			//   document.write("My public IP address is: ", json.ip);
@@ -41,15 +74,23 @@
 </head>
 
 <body>
-	<h1>Income Store IP Whitelisting Portal</h1>
-	<p> Please enter your full name and click Submit:</p>
-	<form name="getIP" action="" method="POST">
-		<label>Full Name:</label>
-		<input id="myName" name="myName" type="text">
-		<input type="hidden" id="myIP" name="myIP">
-		<input type="button" name="button" id="myButton" value="Submit" onclick="sendIP(this.form)">
-	</form>
-	<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+	<center>
+		<h1>Income Store IP Whitelisting Portal</h1>
+		<p> Please enter your full name and click Submit:</p>
+		<form name="getIP" action="" method="POST">
+			<label>Name:</label>
+			<input id="myName" name="myName" type="text">
+			<input type="hidden" id="myIP" name="myIP">
+			<input type="button" name="button" id="myButton" value="Submit" onclick="sendIP(this.form)">
+		</form>
+
+		<p>
+			<b>Warning:</b> If you are using this form on a mobile browser, you <b>must</b> be on wifi <b>and</b> on the
+			same network intended to be used for cpanel administration.
+		</p>
+		<a href="http://incomestorereceivership.com/">incomestorereceivership.com</a>
+		<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+	</center>
 </body>
 
 </html>
